@@ -1,0 +1,52 @@
+{block content}
+
+{var $counter = 0}
+
+<div class="multiplePosts">
+    {foreach $posts as $post}
+        {do $counter++}
+
+        {if $counter == 1}
+            <div class="post" id="post{$counter}">
+        {else}
+            <div class="post hidden" id="post{$counter}">
+        {/if}
+            <div class="top_section_post">
+                <div class='single_header'><h2>{$post->name}</h2></div>
+                <div class="moreOpt"><span id='showMoreOptions'><i class='fas fa-ellipsis-v'></i></span><br></div>
+            </div>
+
+            <div class="content">{$post->content|noescape}</div>
+            <div class="buttons">
+                <div class="cancel_btn_wrap"><a n:href="Homepage:default" class="btn_custom cancel_btn"><i class="fas fa-backward"></i></a></div>
+                {* <div class="readed_btn_wrap"><a onclick="startSliding({$counter});" id="btn{$counter}" class="btn_custom readed_btn"><i class="fas fa-check"></i></a></div> *}
+                <div class="readed_btn_wrap"><a onclick="startSliding({$counter});" id="btn{$counter}" class="btn_custom readed_btn"><i class="fas fa-check"></i></a></div>
+            </div>
+        </div>
+    {else}
+        <div class="post">Momentálně zde nejsou žádné příspěvky. Přijď později.</div>
+    {/foreach}
+
+
+    {* This element helps get value of $counter into JavaScript *}
+    <div id="counter" style="display: none;">{$counter}</div> 
+</div>
+
+{* More options window *}
+<div id='labelMoreOptions'></div>
+
+<div id='moreOptionsWindow'>
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <script type='text/javascript' src='//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-618ff8cab718e948'></script>
+
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <div class='addthis_inline_share_toolbox_xxtf'></div><br>
+
+    <hr><br>
+
+    <a n:href='Prispevek:reportForm' class='report_error'>Nahlásit chybu</a>
+</div>
+
+<script src="../js/read_all.js"></script>
+
+{/block}

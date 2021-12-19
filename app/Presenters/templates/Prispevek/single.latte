@@ -1,0 +1,34 @@
+{block content}
+
+<div class='single_post'>
+    <div class='top_section_post'>
+        <div n:block="title" class='single_header'><h2>{$post->name}</h2></div>
+        <div class="moreOpt"><span class="post" id='showMoreOptions'><i class='fas fa-ellipsis-v'></i></span></div>
+    </div>
+
+    <div class="main_post_content">
+        <p class='single_content'>{$post->content|noescape}</p>
+    </div>
+
+    <div class="buttons">
+        <div class="cancel_btn_wrap"><a n:href="Homepage:default" class="btn_custom cancel_btn"><i class="fas fa-backward"></i></a></div>
+
+            {var $pageType = "single"}
+            <div class="readed_btn_wrap"><a n:href="Homepage:default $pageType, $post->id" class="btn_custom readed_btn"><i class="fas fa-check"></i></a></div>
+    </div>
+</div>
+
+{* More options window *}
+<div id='labelMoreOptions'></div>
+
+<div id='moreOptionsWindow'>
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <script type='text/javascript' src='//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-618ff8cab718e948'></script>
+
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <div class='addthis_inline_share_toolbox_xxtf'></div><br>
+
+    <hr><br>
+
+    <a n:href='Report:ErrorInPost' class='report_error'>Nahlásit chybu</a>
+</div>

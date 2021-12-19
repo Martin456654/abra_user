@@ -1,0 +1,53 @@
+{block content}
+
+<div class="read_all">
+	<a n:href="Prispevek:all" id='readAllBtn'>Přečíst vše&nbsp;&nbsp;<i class='fas fa-fire'></i></a>
+</div>
+
+<div n:foreach="$flashes as $flash" n:class="flash, $flash->type" style="text-align: center; padding-bottom: 20px;">{$flash->message}</div>
+
+	{var $postCounter = 0;}
+	{var $postCounterReaded = 0;}
+
+    <div class="content_posts">
+		{foreach $posts as $post}
+			<div class="post">
+				<div class="header_of_post">
+					<h2>{$post->name}</h2>
+					<span class='postDate'>Před: 1min</span>
+				</div>
+
+				<div class='icons'>
+					<a n:href="Prispevek:single $post->id">
+						{if isset(${'cookie' . $post->id})}
+
+							{if ${'cookie' . $post->id} == "readed"}
+								<div class="round readed">
+								{do $postCounterReaded++}
+							{else}
+								<div class="round">
+							{/if}
+
+						{else}
+							<div class="round">
+						{/if}
+							<i class='fas fa-book'></i>
+						</div>
+					</a>
+				</div>
+			</div>
+
+			{do $postCounter++}
+		{else}
+			<div class="post">Momentálně zde nejsou žádné příspěvky. Přijď později.</div>
+		{/foreach}
+	</div>
+
+	{if $postCounter == $postCounterReaded}
+		<script>
+			const readAllBtn = document.getElementById("readAllBtn");
+			readAllBtn.style.background = "grey";
+		</script>
+	{/if}
+
+{/block}

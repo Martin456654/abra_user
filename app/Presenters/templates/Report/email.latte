@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Nahlášení chyby na webu</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <style>
+        body{
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        header{
+            width: 100%;
+            height: 100px;
+            background: #191A19;
+            margin-bottom: 20px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        img{
+            width: 80px;
+        }
+
+        div{
+            background: #BDC3C7;
+            max-width: 500px;
+            height: auto;
+            padding: 20px;
+            border-radius: 20px;
+
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%);
+
+            text-align: center;
+        }
+    </style>
+<body>
+
+<header>
+    <img src="/img/logo_desetiminutovka.png">
+</header>
+
+<div id="card">
+    <h1>Byla nahlášena chyba na webu!</h1>
+    <p>Chybu nahlásil/a - <b>{$name}</b> - <b>{$email}<b></p>
+    <p><b>Zpráva zní</b></p>
+    <p>{$content}</p>
+</div>
+
+</body>
+</html>

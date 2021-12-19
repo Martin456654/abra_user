@@ -1,0 +1,18 @@
+{block content}
+
+    <div class="reportFormPage">
+        <form n:name=reportForm class=form>
+            <h1>Nahlásit chybu</h1><br>
+
+            <p><label n:name=name><input n:name=name class="name" size=20 placeholder="Jméno" id="postName"></label>
+            <p><label n:name=email><input n:name=email class="email" placeholder="E-mail" id="postEmail"></label>
+            <p><label n:name=type><input n:name=type class="content" placeholder="Předmět" id="postType"></label>
+            <p><label n:name=content><textarea n:name=content name="content" placeholder="Popis chyby" id="postContent"></textarea></label>
+            <p><input n:name=send class="btn btn-default" id="reportBtn">
+        </form>
+
+        <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+    </div>
+
+    <script src="/js/report_form_send_btn.js"></script>
+{/block}
